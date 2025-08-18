@@ -1,0 +1,20 @@
+.lane-wrapper{
+    display:flex;
+   
+    flex-direction:column;
+    width:20rem;
+    height:10rem;
+    
+    
+}
+
+
+.lane-item{
+    padding:0.5rem;
+    line-height:1rem;
+}
+.lane-wrapper input[type=text]{
+  margin-top:0.5rem;
+   padding:0.5rem;
+  margin-bottom:1rem;
+}
