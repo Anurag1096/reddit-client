@@ -1,18 +1,23 @@
-import React from 'react'
-
-interface RendererProps{
-    title:string,
-    author:string,
-    voteCount:number
+import React from "react";
+import './render.css'
+interface RendererProps {
+  title: string;
+  author: string;
+  voteCount: number;
 }
 
-const Renderer = (props:RendererProps) => {
-    const {title,author,voteCount}=props
-    return (<>
-    <div>{title}</div>
-    <div>{author}</div>
-    <div>{voteCount}</div>
-  </>)
-}
+const Renderer = ({ title, author, voteCount }:RendererProps) => {
+  return (
+    <>
+      <div className="render-wrapper">
+        <div className="render-count">{voteCount}</div>
+        <div>
+          <div className="render-item">{title}</div>
+          <div className="render-item"> {author}</div>
+        </div>
+      </div>
+    </>
+  );
+};
 
-export default Renderer
+export default Renderer;

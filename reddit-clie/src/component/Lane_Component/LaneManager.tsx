@@ -25,7 +25,7 @@ const LaneManager = () => {
   return (
     <>
       {laneArr.map((srName: string) => {
-        return <LaneRender name={srName} />;
+        return <LaneRender key={srName} name={srName} />
       })}
     </>
   );

@@ -1,4 +1,5 @@
 import { LaneAdding } from "../../component/Lane_Component/LaneAdding";
+import LaneManager from "../../component/Lane_Component/LaneManager";
 import Modal from "../../component/Modal";
 import React, { useState } from "react";
 
@@ -14,7 +15,11 @@ const Home = () => {
   };
   return (
     <>
+    <div style={{display:"flex"}}>
+    <LaneManager/>
+
       <button onClick={handleOpenModal}>+</button>
+    </div>
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
         <LaneAdding />
       </Modal>

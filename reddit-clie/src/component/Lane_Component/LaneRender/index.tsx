@@ -1,45 +1,58 @@
-//This comp will manage the calling of api and pass it to the render component
-
 import Renderer from "./renderer";
-import {useState,useEffect} from 'react';
+import { useState, useEffect } from "react";
+import { getSubReddit } from "../../../api/subRedditApi";
 
-interface SubName{
-    name:string
+interface SubName {
+  name: string;
 }
-const LaneRender=({name}:SubName)=>{
 
-const [laneObj,setLaneObj]=useState({})
-const [loading,setLoading] = useState(false)
-const [error,setError] = useState<string>()
+interface LaneState {
+  title: string | null;
+  author: string | null;
+  voteCount: number;
+}
 
+const LaneRender = ({ name }: SubName) => {
+  const [laneObj, setLaneObj] = useState<LaneState[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string>();
 
-const fetchApi=async()=>{    
+  const fetchApi = async () => {
     try {
-        setLoading(true)
-        // will fix later
-        const response= await fetch(name)
-        if(!response.ok) throw new Error(`Http Error! status: ${response.status}`)
-        const data =await response.json()
-        setLaneObj(data)
-    }catch(err: any){
-        setError( err.message || 'Something went wrong' )
-    }finally{
-        setLoading(false)
-        console.log("done")
+      setLoading(true);
+      const response = await getSubReddit(name);
+      // 👇 If your API returns an array that matches LaneState[]
+      const data: LaneState[] = response.data;
+
+      setLaneObj(data);
+      console.log(data)
+    } catch (err: any) {
+      setError(err.message || "Something went wrong");
+    } finally {
+      setLoading(false);
+      console.log("done");
     }
-}
+  };
 
-useEffect(()=>{
+  useEffect(() => {
+    fetchApi();
+  }, [name]); // ✅ refetch when subreddit name changes
 
-    fetchApi()
-},[])
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
 
-if(loading) return (<p>Loading...</p>)
-if (error) return <p style={{ color: "red" }}>Error: {error}</p>;   
+  return (
+    <>
+      {laneObj.map((lane, idx) => (
+        <Renderer
+          key={idx}
+          title={lane.title ?? ""}
+          author={lane.author ?? ""}
+          voteCount={lane.voteCount}
+        />
+      ))}
+    </>
+  );
+};
 
-
-    return (<Renderer {...laneObj}/>)
-}
-
-
-export default LaneRender
+export default LaneRender;
