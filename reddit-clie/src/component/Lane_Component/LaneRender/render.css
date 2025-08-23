@@ -1,8 +1,10 @@
 .render-wrapper{
     display:flex;
+    justify-content:center;
+    align-itmes:center;
     padding:0.5rem';
     width:100vw;
-    height:100vh;
+    height:10vh;
 }
 .render-count{
     margin:0.5rem;

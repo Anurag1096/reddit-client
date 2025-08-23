@@ -13,7 +13,7 @@ interface LaneState {
 }
 
 const LaneRender = ({ name }: SubName) => {
-  const [laneObj, setLaneObj] = useState<LaneState[]>([]);
+  const [laneObj, setLaneObj] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>();
 
@@ -22,10 +22,9 @@ const LaneRender = ({ name }: SubName) => {
       setLoading(true);
       const response = await getSubReddit(name);
       // 👇 If your API returns an array that matches LaneState[]
-      const data: LaneState[] = response.data;
-
-      setLaneObj(data);
-      console.log(data)
+      const data = response.data;
+      setLaneObj(data.data.children);
+      console.log(data.data.children)
     } catch (err: any) {
       setError(err.message || "Something went wrong");
     } finally {
@@ -46,9 +45,9 @@ const LaneRender = ({ name }: SubName) => {
       {laneObj.map((lane, idx) => (
         <Renderer
           key={idx}
-          title={lane.title ?? ""}
-          author={lane.author ?? ""}
-          voteCount={lane.voteCount}
+          title={lane.data.title ?? ""}
+          author={lane.data.author ?? ""}
+          ups={lane.data.ups}
         />
       ))}
     </>

@@ -3,16 +3,16 @@ import './render.css'
 interface RendererProps {
   title: string;
   author: string;
-  voteCount: number;
+  ups: number;
 }
 
-const Renderer = ({ title, author, voteCount }:RendererProps) => {
+const Renderer = ({ title, author, ups }:RendererProps) => {
   return (
     <>
       <div className="render-wrapper">
-        <div className="render-count">{voteCount}</div>
-        <div>
-          <div className="render-item">{title}</div>
+        <div className="render-count">{ups}</div>
+        <div style={{display:'flex',flexDirection:'column'}}>
+          <div className="render-item">{title.slice(0,20)}</div>
           <div className="render-item"> {author}</div>
         </div>
       </div>

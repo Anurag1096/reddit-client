@@ -1,6 +1,5 @@
 .lane-wrapper{
     display:flex;
-   
     flex-direction:column;
     width:20rem;
     height:10rem;

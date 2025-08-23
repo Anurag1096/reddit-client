@@ -17,7 +17,6 @@ const Home = () => {
     <>
     <div style={{display:"flex"}}>
     <LaneManager/>
-
       <button onClick={handleOpenModal}>+</button>
     </div>
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
