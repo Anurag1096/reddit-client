@@ -17,7 +17,7 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
         left: 0,
         width: "100%",
         height: "100%",
-        background: "rgba(24, 21, 21, 0.34)",
+        background: "rgba(24, 21, 21, 0.8)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -29,7 +29,8 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
         style={{
           padding: "20px",
           borderRadius: "8px",
-          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 1)",
+          background:"rgba(33, 69, 80, 1)",
           position: "relative",
         }}
       >
@@ -40,7 +41,7 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
             position: "absolute",
             top: "10px",
             right: "10px",
-            background: "none",
+            background: 'rgba(66, 35, 35, 1)',
             border: "none",
             fontSize: "1.2em",
             cursor: "pointer",

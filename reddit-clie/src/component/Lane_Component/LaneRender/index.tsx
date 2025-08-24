@@ -43,12 +43,15 @@ const LaneRender = ({ name }: SubName) => {
   return (
     <>
       {laneObj.map((lane, idx) => (
+    
+
         <Renderer
           key={idx}
           title={lane.data.title ?? ""}
           author={lane.data.author ?? ""}
           ups={lane.data.ups}
-        />
+          />
+          
       ))}
     </>
   );

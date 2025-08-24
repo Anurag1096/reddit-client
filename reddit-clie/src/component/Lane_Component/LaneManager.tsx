@@ -23,11 +23,11 @@ const LaneManager = () => {
     }
   }, [subRedName]);
   return (
-    <>
+    <div style={{display:'flex'}}>
       {laneArr.map((srName: string) => {
-        return <LaneRender key={srName} name={srName} />
+        return (<div style={{overflow:"scroll" ,width:"100%",height:"100vh",padding:"0.5rem"}}><LaneRender key={srName} name={srName} /></div>)
       })}
-    </>
+  </div>
   );
 };
 
