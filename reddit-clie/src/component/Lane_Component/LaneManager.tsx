@@ -25,7 +25,7 @@ const LaneManager = () => {
   return (
     <div style={{display:'flex'}}>
       {laneArr.map((srName: string) => {
-        return (<div style={{overflow:"scroll" ,width:"100%",height:"100vh",padding:"0.5rem"}}><LaneRender key={srName} name={srName} /></div>)
+        return (<div style={{resize:"horizontal",overflow:"scroll" ,width:"100%",height:"94vh",padding:"0.5rem"}}><LaneRender key={srName} name={srName} /></div>)
       })}
   </div>
   );
